@@ -37,3 +37,11 @@ User said "the resolution looks low" at full 1080p. Real causes: subject small a
 
 ## Over-denoise warning
 Too much denoise = waxy paper, melted print, plastic wood. Keep samples high enough that OIDN only polishes.
+
+## Matching Cycles in a dark interior (measured)
+- Shadow **Jitter** on every big area light (EEVEE shadows from the centre without it). Glossy-floor sparkle from a jittered light → split it: diffuse-only jittered copy + specular-only non-jittered copy in front of the occluder (energy fitted, here 0.16×).
+- Fit strengths: render each light group alone in both engines (linear EXR), least-squares the multipliers, add a few weak shadowless fills where Cycles has bounce (ceiling, walls near windows, front floor). Strength scaling alone cannot fix distribution.
+- Compositor Denoise (Image + Normal + Diffuse Color, HDR, Accurate) brings jitter grain to Cycles level at 64 samples.
+- EEVEE ignores area-light Spread; emissive meshes don't light in EEVEE; very thin fog (≈0.01) is invisible.
+- Flicker check: freeze the scene, render 8 identical frames, diff them. In our case render was stable (0.37/255); visible "shake" came from camera float. Jittered DOF increased flicker 3×; 256 samples and no-denoise changed nothing.
+- Result: 88 % of Cycles brightness, noise ≈ Cycles, 34 s vs 223 s per 1080p frame on an RTX 3060.

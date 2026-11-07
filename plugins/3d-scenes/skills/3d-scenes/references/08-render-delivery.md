@@ -19,3 +19,8 @@ Rule: render **one** frame with the final profile, read its time, multiply, add 
 ## Deliverables
 - Full quality only: 100% resolution, the scene's samples, **PNG frames + ProRes 4444 XQ** (or 422 HQ). MP4 only as a preview link.
 - Frame range and fps must match the edit (30 fps here). Shot length in seconds = frames / fps; tell the editor the cut frame in seconds too (frame 180 of 100–259 = 2.67 s in).
+
+## Full quality only
+- Deliver PNG frames + **ProRes 4444 XQ** (`prores_ks -profile:v 5 -pix_fmt yuv444p12le`). No compressed MP4 next to deliverables; MP4 only for quick previews. Users judge "quality" from what they open — an NVENC MP4 looked like render noise.
+- Browsers don't play ProRes: tell the user to open it in QuickTime / the NLE.
+- Fast motion preview (camera/timing only): Workbench, FLAT light, Texture colour, 50 %, no motion blur, from a copy; force movie images to sRGB in the copy so the screen shows true colours.

@@ -21,3 +21,11 @@ Every row happened in a real session. Check the cause before applying the fix.
 | `look` rendered fails | Tool only captures EEVEE/Workbench rendered mode | Use EEVEE or render a frame | 10 |
 | Design board shows empty image frames | WebP not displayed | Upload JPG/PNG | 02 |
 | Can't download reels | Private/age-gated account | Ask the user to send the files | 02 |
+| Screen animation looks very dark on the monitor | Plain video sent through a chain built for a LUT-compensated video | Separate path: Sat 1.15 → AgX curve → Emission, switched at the cut | 07 |
+| Camera "X-rays" through a lamp/character near the monitor | clip_start driver cuts objects between camera and screen | Move the prop out of frame / lower clip_start | 06 |
+| User's hand framing lost | Unkeyed camera snapped back on refresh | Read transform immediately, or key it (I) | 06 |
+| Tracking stops mid-shot | Frame clamp on an axis the cursor keeps moving along | Clamp per axis; remove the clamp for that shot | 06 |
+| New scene copy shows an empty viewport | `scene.copy()` result not displayed | Use Scene ▸ New ▸ Linked Copy (`bpy.ops.scene.new(type='LINK_COPY')`) | 10 |
+| EEVEE fill light gives no light at all | Area light centre inside an occluder | Shadow Jitter on | 07 |
+| Quality "looks bad" in a delivered clip | Compressed MP4 preview | Deliver ProRes 4444 XQ / PNG | 08 |
+

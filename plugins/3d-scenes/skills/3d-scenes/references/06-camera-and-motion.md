@@ -45,3 +45,18 @@ Numbers that were approved:
 ## Other animation
 - Existing animation in the copied project (laptop lid opening) can be retimed: shift its keys so the shot starts as it opens (shot start = lid start).
 - Per-light energy keys at the cut (CONSTANT) are possible but were a weak fix — prefer separate light linking per group (05).
+
+## Peak Zoom («زوم القمة») — the default move for screen/UI shots
+A 30-frame move with the mountain graph whose **speed peak lands exactly on the key frame**: the click, the cut, or a frame the user names.
+- Keys: `peak−15` = old pose, `peak+15` = new pose (often the angle the user framed by hand). Location AND rotation. Bezier, FREE flat handles = 0.75 × segment.
+- **Across a cut**: put the same two keys on both cameras (outgoing ends mid-move, incoming starts mid-move). Check camera position difference = 0 at the cut.
+- **Before an action**: peak ≈8 frames before the click so the frame is settled when the click happens.
+- Measure: per-frame camera step should rise to a single maximum on the peak frame and fall to 0 at ±15.
+
+## Screen / UI shots (camera on a monitor showing an animation)
+1. Analyse the UI video first (agents in parallel, one per clip): hard cuts, segments, cursor arrow tip per frame (NCC template + frame differencing for motion blur), panel boxes. Verify points by drawing them on frames.
+2. One camera per clip, cut by markers. Keep the user's framing; tracking offsets the camera parallel to the screen by the **cursor** delta (not the playhead line). Clamp per axis so the frame stays on the monitor.
+3. Holds vs tracking: the user decides per clip (e.g. "stop after 1 s", "track the cursor to the end", "keep the clip centred horizontally").
+4. When the user says "كذا" after framing in camera view, read `camera.location/rotation_euler` **immediately**; any refresh snaps an unkeyed camera back to its curve. Fallback: ask them to press I.
+5. Trim/re-time the screen animation itself with ffmpeg (concat `-c copy`, trim start + ProRes 422 HQ for one clip) instead of fighting the camera.
+6. Light shake: rotation Noise X/Z 0.02 (+0.0014 fine), scale ≈38–52, Y untouched; motion blur shutter 0.375.
