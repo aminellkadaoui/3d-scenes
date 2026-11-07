@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "Field-tested knowledge for building cinematic Blender scenes fast (EEVEE-first, short feedback loop).",
-    "version": "1.0.1"
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "3d-scenes",
       "source": "./plugins/3d-scenes",
-      "description": "Build cinematic Blender 3D scenes for videos in record time: EEVEE quality recipes, light linking (track-matte lighting), turntable + object match cut, materials, noise fixes, short feedback loop, and a retro skill that grows the knowledge after every project.",
-      "version": "1.0.1"
+      "description": "Deep Blender knowledge for building cinematic, non-slop 3D scenes fast: field-tested recipes (EEVEE quality, light linking / track-matte lighting, turntable + match cut, camera rigs, noise fixes) plus a library of 14 pillar guides, 57 technique cards and 30 analysed tutorials, with QA, validation, tutorial-learning and retro skills.",
+      "version": "1.1.0"
     }
   ]
 }

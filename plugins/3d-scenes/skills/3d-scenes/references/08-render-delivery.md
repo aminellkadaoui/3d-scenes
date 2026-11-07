@@ -5,7 +5,7 @@
 |---|---|---|
 | Knowledge-base table (simple/furnished room, EEVEE, 128 samples) | 1–5 s | — |
 | This scene at 128 samples (before quality pass) | "2–5 s" | not measured |
-| **Final profile** (07) on RTX 3060, 1080p | — | **≈34–36 s/frame** (first frame 47 s: shader compile) |
+| **Final profile** (07) on a 12 GB mid-range GPU, 1080p | — | **≈34–36 s/frame** (first frame 47 s: shader compile) |
 
 160 frames ≈ 95 min + ProRes encode. The quality profile (256 samples, Fast GI 1:1 ×8 rays, motion-blur 3 steps, raytracing 1:1, plane probe) multiplied cost ~10×.
 Rule: render **one** frame with the final profile, read its time, multiply, add ~5% and encode time. Tell the user the clock time it will finish (`date`).

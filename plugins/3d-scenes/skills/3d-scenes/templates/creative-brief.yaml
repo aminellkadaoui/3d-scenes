@@ -1,0 +1,19 @@
+project:
+  name: ""
+  purpose: ""               # what this shot must make the viewer understand/feel
+  duration_seconds: null
+  aspect_ratio: ""          # decided by platform: 16:9 VSL, 9:16 shorts...
+  fps: null
+creative:
+  style: ""                 # photoreal documentary | product viz | stylized | archviz | motion-graphic 3D
+  mood: ""
+  visual_priority: ""       # the ONE thing the eye must land on
+  references: []            # paths/urls + what each one is a reference FOR (light, comp, material, motion)
+camera:
+  movement: ""
+  focal_length: "decided in blockout"
+constraints:
+  avoid_generic_ai_aesthetic: true
+  prefer_professional_assets: true
+  render_budget_per_frame: ""
+  require_preview_validation: true

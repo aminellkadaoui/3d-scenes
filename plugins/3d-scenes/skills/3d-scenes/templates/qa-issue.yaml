@@ -1,0 +1,13 @@
+issue:
+  id: "QA-000"
+  category: "materials"     # composition|assets|materials|lighting|camera|environment|animation|render|compositing|color
+  severity: "high"          # blocker|high|medium|low
+  object: ""
+  observation: ""
+  suspected_cause: ""
+  proposed_fix: ""          # smallest change
+  affected_objects: []
+  requires_full_rerender: false
+  validation: "single-frame preview"
+  attempts: 0               # after 2-3 failed attempts -> re-diagnose, do not keep tweaking
+  status: "open"

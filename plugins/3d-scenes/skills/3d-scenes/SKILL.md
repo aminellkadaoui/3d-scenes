@@ -1,56 +1,78 @@
 ---
 name: 3d-scenes
-description: Build cinematic Blender 3D scenes for videos (VSL, ads, reels, product shots) in record time with EEVEE, using field-tested recipes instead of re-discovering them - short feedback loop, light linking as "track matte" lighting, turntable spin + object match cut with an After-Effects-style speed graph, camera crane rig, polished floor/metal/paper materials, EEVEE noise and sharpness fixes, render-time estimates and delivery. Use whenever the user wants to build, light, animate, fix or render a Blender scene - "سوي مشهد", "مشهد 3D", "سوي لي سين في بلندر", "خل الإضاءة تأثر على الفلوس بس", "سوي له مات", "light sweep", "متش كت", "جراف الجبل", "النويز كثير", "الجودة ضعيفة", "الأرضية تعكس", "رندر", "turntable", "match cut", "product reveal", "make this look premium", "EEVEE noise", "light linking" - even if they don't say "skill".
+description: Lead any Blender 3D scene/shot from idea to delivered render so it looks professional and cinematic (not AI slop), fast, using a deep knowledge base - art direction, composition, camera & lens, assets, PBR materials, motivated lighting, light linking ("track matte" lighting), environment & atmosphere, animation (turntable, match cut, AE-style speed graphs, camera rigs), EEVEE/Cycles rendering, noise & sharpness fixes, color management, compositing, QA - built from 30 analysed tutorials, 57 technique cards and field-tested production recipes. Use whenever the user wants to build, light, texture, animate, fix or render a Blender scene - "سوي مشهد", "مشهد 3D", "سوي لي سين في بلندر", "خل المشهد احترافي", "المشهد شكله AI", "حسّن الإضاءة/الخامات/الكمرة", "سوي له مات", "light sweep", "متش كت", "جراف الجبل", "النويز كثير", "الجودة ضعيفة", "الأرضية تعكس", "رندر", "cinematic shot", "product render", "turntable", "make this look real/premium" - even if they don't say "skill".
 ---
 
-# 3D Scenes — build premium Blender shots fast
+# 3D Scenes — the director
 
-This skill is distilled from real production work (Blender 5.2, EEVEE, Blender MCP). Every recipe here was **applied in a real shot and checked**, not copied from a tutorial. Status of each recipe is marked in the reference files: `Proven` (worked in a delivered shot) or `Candidate` (worked once, needs another project).
+Everything lives next to this file. Two layers of knowledge:
 
-Reply in the user's language. Most users of this skill write Gulf Arabic and use editor words (After Effects terms) for 3D concepts — translate them (see `references/00-vocabulary.md`).
+| Layer | Folder | Trust | Use it for |
+|---|---|---|---|
+| **Proven recipes** | `references/` (00–11), `case-studies/`, `lessons/LESSONS.md` | Applied in delivered shots, with numbers | First choice. Copy the values. |
+| **Knowledge library** | `knowledge/` (14 pillars), `techniques/` (57 cards), `sources/` (30 tutorial analyses), `looks/` | `Extracted` from tutorials (YouTube + Skool Render Room), cited `[id@mm:ss]`; a few cards `Reproduced`/`Validated` | Principles, starting values, options, what to avoid. Verify on a representative frame before relying on it. |
 
-## The one idea
-Quality came fast because of **a short, disciplined feedback loop**, not because of heavy settings:
-1. Start from a scene that already looks good (the user's approved file), never from an empty file.
-2. One change per round → check through the camera in Rendered → report value *before → after* → let the user react.
-3. Diagnose before changing (solo the light, crop the render at 100%, measure pixels). Never "fix" by guessing.
-4. Small steps (20–30%) when the user says "more/less" (زيد/نقّص).
-5. Turn every solved problem into a rule (run `3d-scenes-retro` at the end).
+Read only what the current stage needs. Reply in the user's language (often Gulf Arabic; translate editor words with `references/00-vocabulary.md`).
+
+## The core idea
+Slop = every decision left at its default or made without intent. The cure is not "more effects": **replace every default with a decision, and make every decision serve one shot-level idea.** Fix in order of influence: Concept → Composition/Camera → Lighting → Environment → Assets → Materials → Animation → Render → Grade. A perfect material can't save a frame with no idea and a bad camera.
+
+Speed comes from a **short feedback loop** (`references/11-feedback-loop.md`): start from an approved scene, one change per round, look through the camera, report before → after, diagnose before fixing.
 
 ## Workflow (gate before moving on)
 
-| # | Stage | Read | Exit check |
-|---|---|---|---|
-| 0 | Safety & setup | `references/01-project-setup.md` | Working on a **copy** in its own folder; original untouched; unsaved work in other files checked |
-| 1 | Brief in one place | `references/02-brief-and-references.md` | One brief (file + board): idea, each reference labelled by what it's for, measured tone numbers |
-| 2 | Assets | `references/03-assets.md` | Real-scale, grounded, no intersections, inside the hero area; unwanted parts moved to `_HIDDEN_*` collections |
-| 3 | Camera | `references/06-camera-and-motion.md` §Camera | User-approved angle captured as numbers; rig built |
-| 4 | Materials | `references/04-materials.md` | Floor/metal/paper/screen recipes applied; colour spaces right |
-| 5 | Lighting | `references/05-lighting-light-linking.md` | Each light has one job and an explicit receiver set (light linking) |
-| 6 | Animation | `references/06-camera-and-motion.md` | Speed graph sampled (deg/frame table), cut on the peak frame, no dead stops |
-| 7 | Quality | `references/07-eevee-quality-noise.md` | Final EEVEE profile, compositor denoise, no sparkle/grain at 100% crop |
-| 8 | Render & delivery | `references/08-render-delivery.md` | 1 measured frame → time estimate → full render → PNG + ProRes |
-| 9 | Retro | skill `3d-scenes-retro` | New lessons written to `lessons/LESSONS.md` |
+| # | Stage | Proven recipe | Library | Exit check |
+|---|---|---|---|---|
+| 0 | Setup | `references/01-project-setup.md` | `knowledge/production-pipeline.md` | Working on a copy; original untouched |
+| 1 | Brief | `references/02-brief-and-references.md` | `knowledge/art-direction.md`, `templates/creative-brief.yaml`, `looks/` | Purpose, one hero, aspect/fps/duration, refs labelled by job, measured tone |
+| 2 | Shot plan + camera | `references/06-camera-and-motion.md` | `knowledge/composition.md`, `knowledge/camera-lenses.md`, `techniques/camera-*`, `techniques/composition-*` | Lens/height/move per shot with a reason |
+| 3 | Blockout | — | `knowledge/composition.md` | Grayscale/thumbnail test: hero reads, depth layers, space for titles |
+| 4 | Assets | `references/03-assets.md` | `knowledge/assets-modeling.md`, `techniques/assets-*` | Real scale, grounded, no intersections, no primitive props |
+| 5 | Materials | `references/04-materials.md` | `knowledge/materials-pbr.md`, `techniques/materials-*` | Plausible albedo, varied roughness, imperfection on hero, colour spaces right |
+| 6 | Lighting & look-dev | `references/05-lighting-light-linking.md` | `knowledge/lighting.md`, `knowledge/environment-atmosphere.md`, `knowledge/color-management.md`, `techniques/lighting-*`, `techniques/environment-*`, `techniques/color-*` | Motivated key/fill/rim, hero separated, light linking per group, no clipping |
+| 7 | Animation | `references/06-camera-and-motion.md` | `knowledge/animation.md`, `techniques/animation-*` | Speed table checked, no dead stops, motion serves the edit |
+| 8 | Render quality | `references/07-eevee-quality-noise.md` | `knowledge/rendering.md`, `techniques/rendering-*` | No grain/sparkle at 100% crop |
+| 9 | Compositing & grade | — | `knowledge/compositing.md`, `techniques/compositing-*` | Subtle, motivated, adjustable |
+| 10 | QA | skill `3d-scenes-qa` | `knowledge/ai-slop-diagnosis.md`, `knowledge/photorealism.md` | No domain ≤2, total ≥40/50 |
+| 11 | Render & delivery | `references/08-render-delivery.md` | `knowledge/rendering.md` §7–8 | 1 measured frame → estimate → full render → PNG + ProRes |
+| 12 | Retro | skill `3d-scenes-retro` | — | Lessons written, repo published |
 
-Anything going wrong → `references/09-troubleshooting.md` (symptom → cause → fix). Blender 5.x Python traps → `references/10-blender5-api.md`. Ready code → `scripts/` (paste into Blender MCP `execute_blender_code`; each script has a CONFIG block at the top).
+Problems → `references/09-troubleshooting.md` first, then the matching `knowledge/` file. Blender 5.x Python traps → `references/10-blender5-api.md`. Ready code → `scripts/` (CONFIG block at the top of each).
 
-Full worked example with every number: `case-studies/laptop-to-money.md`. Read it once before your first scene with this skill — it is the fastest way to absorb the method.
+## How to search the library fast
+- Find cards: `ls techniques/ | grep <domain>` (domains: animation, assets, camera, color, compositing, composition, environment, lighting, materials, rendering).
+- Find a topic across everything: `grep -ril "<keyword>" knowledge techniques sources references`.
+- Each card: Principle → Steps (starting values) → Use when / Avoid when → Failure signs → Cost → Conflicts → Test. Respect "Avoid when".
+- When sources disagree, the card records both; choose by the stated condition, and say which you chose.
+- Prefer `Validated`/`Proven` over `Extracted`. Using an `Extracted` value: check it on a representative frame.
 
-## Feedback-loop protocol (the part that saves the most time)
-Read `references/11-feedback-loop.md`. Short version:
-- **Look before and after every change** (`look` camera + rendered, small `max_size`). If `look` can't show something (screen-space reflections, final noise), say so and ask for one rendered frame instead of guessing.
-- **Report as a table**: what changed, before → after, which reference/recipe it came from.
-- **Respect the user's manual edits**: re-read scene values at the start of every turn (they edit in the UI, press Ctrl+Z, move lights). Never overwrite a value they set without saying so.
-- **When the user says "it doesn't work"**: solo the suspect (hide others), check aim angle, check light-linking membership, check exposure on *every* duplicate — then explain the cause in one line.
-- **Ask only real decisions** (art direction, swapping a hero asset, anything that changes the user's chosen angle). Fix technical problems yourself.
-- **No auto-render, no auto-save.** Saving a *copy* for a render job is fine when the user asked to render.
+## Non-negotiables per pillar (details in `knowledge/`)
+- **Concept & composition** — one hero readable in 3 s; not dead-centre by accident (unless symmetric product); FG/MG/BG; value contrast puts the eye on the hero (grayscale + squint + 160 px thumbnail); negative space for captions.
+- **Camera** — never the default 50 mm aimed at origin. Position sets perspective, focal length crops. Wide 24–35, medium 35–50, product hero 85–105, telephoto 135+. Realistic f-stop at real scale (or DOF off). 9:16 needs its own camera. Motion blur shutter 0.5.
+- **Assets** — real metres, scale applied; bevel hard edges; silhouette detail big/medium/small; vary repeats (1–5°); objects touch the ground. Ready-made assets only — never primitives for props/characters; say at once if something is missing.
+- **Materials** — albedo never pure black/white, lower saturation than you think; metallic 0 or 1; roughness always varied in a narrow band; base → macro variation → dirt → wear → story detail; colour maps sRGB, data maps Non-Color.
+- **Lighting** — one dominant motivated source per area; key 30–60° off axis, 20–45° up; keep shadows, fill don't erase; separate the hero (rim/background contrast); glossy/glass get designed reflections (gradient cards); each light one job — enforce with **light linking**; exposure in Color Management, not by cranking watts.
+- **Environment** — never a flat grey/black void: designed dark backdrop, cyc, HDRI or set; scale cues; atmosphere scaled to scene units.
+- **Animation** — Auto-Clamped stops at every key = robotic. Choose handles per key; asymmetric ease for reveals; camera on a rig; slow drift instead of dead stops.
+- **Render & colour** — AgX (Khronos PBR Neutral for exact brand colours); preview → look-dev → final profiles; denoise appropriately; deliver PNG16/ProRes, EXR for comp.
+- **Compositing** — glare, vignette, grain, lens effects: each needs a reason, starts subtle, stays adjustable.
 
-## Hard rules
-- Ready-made assets only (Poly Haven, Sketchfab, user files). Never model props/characters from primitives; if something is missing, say so at once.
-- Never delete user objects: move them to a hidden, excluded collection (`_HIDDEN_*`).
-- Engine is EEVEE unless the user asks for Cycles. Don't switch engines silently.
-- Never trust a time estimate from tables — render one frame and measure (estimates were 7–10× too low in practice).
-- Deliver full quality (100% res, scene samples, PNG frames + ProRes). Previews only when asked.
+## Engine choice
+Default EEVEE (fast, proven here with the profile in `references/07-eevee-quality-noise.md`). Use Cycles when the shot needs physically correct glass/refraction, interior GI through windows, or Cycles-only features (`knowledge/rendering.md` §1 decision table). Don't switch silently.
 
-## Growing the knowledge
-After every project, run the `3d-scenes-retro` skill. It turns the session's problems and solutions into new rules in `lessons/LESSONS.md` and proposes upgrades to the reference files (with the user's approval). A rule that works in a second project is promoted from `Candidate` to `Proven`.
+## Iteration discipline
+Issue → root cause → smallest change → cheapest validation → compare → keep/revert. Log with `templates/qa-issue.yaml`. After 2–3 failed attempts: re-diagnose from a higher layer (composition problems often look like lighting problems), check `techniques/`, or ask the user.
+
+## Ask the user only for
+Art direction or story changes, swapping a hero asset, changing an angle they approved, paid assets/renders. Fix technical issues yourself.
+
+## Blender MCP practice
+`get_addon_status` + `get_scene_info` first. Find shader nodes by `type`. Read enum identifiers, don't hardcode. Size imported assets from bounding boxes / vertices. `look` with small `max_size` often; `look` can't show final noise or all screen-space reflections — render a frame for those. Run the audit in `knowledge/ai-slop-diagnosis.md` §5 after major stages. Blender 5.x breaks old tutorial code (compositor node groups, slotted actions, EEVEE Next names) — `references/10-blender5-api.md`.
+
+## Rules
+No auto-render, no auto-save (saving a copy for a requested render is fine). Never delete user objects — hide them in `_HIDDEN_*` collections. Full-quality deliveries only. Measure render time on one frame before promising a time.
+
+## Growing the system
+- New tutorial → skill `3d-scenes-learn-tutorial` (adds `sources/` + `techniques/` + updates `knowledge/`).
+- Test a card in isolation → skill `3d-scenes-validate` (promotes Extracted → Reproduced → Validated).
+- After every project → skill `3d-scenes-retro` (lessons, case study, publish).

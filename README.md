@@ -1,23 +1,33 @@
 # 3D Scenes
 
-نظام معرفي لـClaude Code يساعدك تبني مشاهد Blender سينمائية (VSL، إعلانات، ريلز) بسرعة وبجودة عالية على EEVEE. المعرفة كلها مأخوذة من مشاريع حقيقية: المشاكل اللي صارت، وأسبابها، والحلول بالأرقام.
+نظام معرفي لـClaude Code يخلّيه يبني مشاهد Blender سينمائية (VSL، إعلانات، ريلز، منتجات) بسرعة وبجودة احترافية، مو «AI slop». فيه طبقتين: **وصفات مجربة** من مشاريع حقيقية بالأرقام، و**مكتبة معرفة** كاملة مستخرجة من 30 شرح (يوتيوب + دروس Skool Render Room) و57 كرت تقنية.
 
-A Claude Code plugin that turns real Blender production experience into reusable knowledge: EEVEE quality recipes, light linking ("track matte" lighting), turntable spin + object match cut, camera crane, materials, a symptom → fix table, ready bpy scripts, and a retro skill that grows the knowledge after every project.
+A Claude Code plugin that gives Claude a deep Blender knowledge base: field-tested production recipes (EEVEE quality, light linking, turntable + match cut…) plus a library distilled from 30 tutorials, 57 technique cards and 14 pillar guides (art direction → compositing), with QA, validation, tutorial-learning and retro skills.
 
 ## وش فيه
 | الجزء | الوظيفة |
 |---|---|
-| `3d-scenes` (Skill) | المخرج: مسار العمل، والـFeedback loop، ويوجّه للملف المناسب |
-| `references/` | 12 ملف معرفة متخصص (الإضاءة، الخامات، الحركة، النويز، الرندر، المشاكل…) |
-| `scripts/` | سكربتات bpy جاهزة (Turntable، Match cut، Light linking، جودة EEVEE، كمرة كرين…) |
-| `case-studies/` | مشاريع كاملة بكل قراراتها وأرقامها |
-| `lessons/LESSONS.md` | قواعد قصيرة تكبر مع كل مشروع |
-| `3d-scenes-retro` (Skill) | بعد كل مشروع: يحوّل اللي تعلمناه لقواعد ويحدّث النظام |
+| **Skill `3d-scenes`** | المخرج: مسار العمل من البريف للتسليم، والـFeedback loop، ويوجّه لأي ملف يحتاجه |
+| `references/` (12) | **وصفات مجربة**: الإضاءة والـLight linking، والخامات، والحركة، والنويز، والرندر، وجدول المشاكل والحلول |
+| `knowledge/` (14) | **ركائز المعرفة**: الإخراج الفني، والتكوين، والكمرة والعدسات، والأصول، وخامات PBR، والإضاءة، والبيئة والأجواء، والتحريك، والرندر، وإدارة الألوان، والكمبوزيتنق، والواقعية، وتشخيص الـAI slop، ومسار الإنتاج |
+| `techniques/` (57) | **كروت تقنيات**: المبدأ، والخطوات بالقيم، ومتى تستخدم ومتى لا، وعلامات الفشل، والتكلفة، وكيف تختبرها |
+| `sources/` (30) | **تحليل الشروحات** بالتوقيتات `[id@mm:ss]`، والادعاءات المشكوك فيها، ودروس ضد الـslop |
+| `looks/` | تحليل ستايل مقاس بالأرقام (مثال: وثائقي ليلي غامق) |
+| `scripts/` (14) | سكربتات جاهزة: Turntable، Match cut، Light linking، جودة EEVEE، كمرة Crane، تشخيص الضوء، قياس الريفرنس، فحص الفليكر، مقارنة EEVEE/Cycles، تحميل الشروحات |
+| `case-studies/`، `lessons/` | مشاريع كاملة بأرقامها، وقواعد قصيرة تكبر مع كل مشروع |
+| `templates/` | بريف، وكرت تقنية، وتحليل شرح، وتقرير مشكلة |
+| **Skill `3d-scenes-qa`** | يقيّم المشهد (10 مجالات من 5) ويطلع الأسباب والإصلاحات |
+| **Skill `3d-scenes-validate`** | يختبر تقنية في مشهد معزول ويرقّيها بالدليل |
+| **Skill `3d-scenes-learn-tutorial`** | يحوّل أي شرح جديد لمعرفة وكروت |
+| **Skill `3d-scenes-retro`** | بعد كل مشروع: قواعد جديدة + Case study + نشر التحديث |
+
+### درجات الثقة
+`Extracted` من شرح وما انجرب ← `Reproduced` انجرب وطلع نفس الشي ← `Validated` تحسّن مقاس مقارنة بالأساس ← `Production-ready` / `Proven` اشتغل في مشاريع حقيقية. المساعد يفضّل المجرّب، ويتحقق من المستخرج على فريم قبل ما يعتمد عليه.
 
 ## المتطلبات
 - Claude Code.
 - Blender 5.x مع إضافة **Blender MCP** (عشان Claude يتحكم في Blender المفتوح).
-- اختياري: ffmpeg و numpy لتحليل الريفرنسات.
+- اختياري: ffmpeg و numpy و Pillow لتحليل الريفرنسات والفليكر، و`yt-dlp` + `imageio-ffmpeg` + `certifi` عشان سكيل تعلّم الشروحات.
 
 ## التثبيت (مرة وحدة)
 داخل Claude Code:
@@ -50,12 +60,16 @@ bash tools/publish.sh "وش تغيّر"
 
 ## الاستخدام
 اكتب طلبك عادي: «سوي لي مشهد لابتوب يدور ويتحول لفلوس»، «النويز كثير»، «خل الإضاءة الزرقاء تأثر على الفلوس بس». الـSkill تشتغل لحالها.
-بعد ما تخلص المشروع: «سوي retro» أو «احفظ اللي تعلمناه».
+- «قيّم المشهد» أو «ليش شكله AI» ← سكيل QA.
+- «ادرس هالشرح وضيفه للنظام» + رابط ← سكيل تعلّم الشروحات.
+- «اختبر هالتقنية» ← سكيل الاختبار.
+- بعد ما تخلص المشروع: «سوي retro» أو «احفظ اللي تعلمناه».
 
 ## تطوير المعرفة
 - القاعدة اللي اشتغلت مرة = `Candidate`. لو اشتغلت في مشروع ثاني = `Proven`.
 - لا تحط معلومات خاصة (IP، مسارات جهازك، أسماء عملاء، توكنات). سكيل الـretro يفحصها قبل الحفظ.
 
 ## Changelog
+- 1.1.0 — أُضيفت مكتبة المعرفة كاملة: 14 ركيزة، و57 كرت تقنية، و30 تحليل شرح (يوتيوب + Skool)، وتحليل ستايل، وقوالب، و4 سكربتات. وأُضيفت سكيلز QA والاختبار وتعلّم الشروحات. وأعيدت كتابة المخرج بحيث يوجّه للطبقتين.
 - 1.0.1 — ريبو GitHub عام، وسكربت `tools/publish.sh` للنشر، وطريقة التحديث للأصحاب.
 - 1.0.0 — أول نسخة، من مشروع «Laptop → Money» (EEVEE، Turntable + Match cut).
