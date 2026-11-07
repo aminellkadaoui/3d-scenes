@@ -1,5 +1,13 @@
 # 06 — Camera & motion (Proven)
 
+## Default speed graph — "mountain" (جراف الجبل) = In 75% / Out 75%
+The user's rule for **every** move (camera, objects, zoom, push-in, UI, cursor, scroll): speed starts at 0, rises to one smooth peak in the middle, returns to 0 — After Effects Speed graph influence **In 75% / Out 75%**.
+- Blender: Bezier, FREE handles, flat tangents, handle length = **0.75 × segment** (right handle on the start key, left handle on the end key). `scripts/mountain_ease.py` → `apply_mountain(fcurve)`.
+- HTML/JS/CSS: `cubic-bezier(0.75, 0, 0.25, 1)`.
+- Not wanted: "fast spike + long tail" (In 100 / Out 10), Auto-Clamped defaults, Expo ease-out — unless the user asks.
+- Exceptions: hold keys (flat), constant drift layers and frame-by-frame tracking (LINEAR).
+- Verify with a speed table (value change per frame), not by eye.
+
 ## Camera
 - Let the user frame the final angle themselves in the viewport, then **read it back as numbers**: aim point (closest point of the view ray to the hero axis), distance, azimuth, elevation. Build the move around that end pose — the last frame must equal their angle exactly.
 - Lens that worked for a hero on a stand in a dark space: 35 mm at ≈1.26 m from the top (subject fills the frame, little distortion).
@@ -9,7 +17,7 @@
 `scripts/camera_crane.py`
 - `CAM_Rig` empty at the aim point; camera child at (0, −D, 0), rotation (90°,0,0); rig rotation Z = azimuth, X = −elevation.
 - Animate rig X from −10° (near table level) to −31° (user's angle) over the whole shot.
-- Ease: Bezier, handles = 1/3 segment with **half the average slope** (gentle, never 0 speed), Linear extrapolation → no dead stop at either end.
+- Ease: **mountain 75/75** by default (`EASE="mountain"` in the script). Alternative `EASE="drift"`: handles 1/3 segment with half the average slope + Linear extrapolation (never reaches 0 speed) — only when the move must keep drifting past the shot edges.
 
 ## Turntable spin ("المعدنة تدور والأوبجكت معها")
 `scripts/turntable_rig.py`

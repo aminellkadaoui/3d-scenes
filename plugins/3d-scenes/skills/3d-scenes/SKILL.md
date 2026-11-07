@@ -53,7 +53,7 @@ Problems → `references/09-troubleshooting.md` first, then the matching `knowle
 - **Materials** — albedo never pure black/white, lower saturation than you think; metallic 0 or 1; roughness always varied in a narrow band; base → macro variation → dirt → wear → story detail; colour maps sRGB, data maps Non-Color.
 - **Lighting** — one dominant motivated source per area; key 30–60° off axis, 20–45° up; keep shadows, fill don't erase; separate the hero (rim/background contrast); glossy/glass get designed reflections (gradient cards); each light one job — enforce with **light linking**; exposure in Color Management, not by cranking watts.
 - **Environment** — never a flat grey/black void: designed dark backdrop, cyc, HDRI or set; scale cues; atmosphere scaled to scene units.
-- **Animation** — Auto-Clamped stops at every key = robotic. Choose handles per key; asymmetric ease for reveals; camera on a rig; slow drift instead of dead stops.
+- **Animation** — **Default speed graph for EVERY move = "mountain" (جراف الجبل): AE Speed In 75% / Out 75%** — flat tangents, FREE handles at 0.75 × segment on both keys (`scripts/mountain_ease.py`; HTML/JS `cubic-bezier(0.75,0,0.25,1)`). Use it unless the user asks otherwise; exceptions: holds, constant drift, frame tracking (linear). Auto-Clamped stops at every key = robotic. Choose handles per key; asymmetric ease for reveals; camera on a rig; slow drift instead of dead stops.
 - **Render & colour** — AgX (Khronos PBR Neutral for exact brand colours); preview → look-dev → final profiles; denoise appropriately; deliver PNG16/ProRes, EXR for comp.
 - **Compositing** — glare, vignette, grain, lens effects: each needs a reason, starts subtle, stays adjustable.
 

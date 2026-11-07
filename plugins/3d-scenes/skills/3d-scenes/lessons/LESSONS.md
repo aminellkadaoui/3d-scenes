@@ -16,3 +16,4 @@ Format: `- [YYYY-MM-DD] [area] Rule — evidence (project) — status`
 - [2026-11-07] [render] Measure one final-quality frame before promising a time; tables underestimated ~10× — laptop-to-money — Proven
 - [2026-11-07] [setup] Starting from the user's approved scene is the biggest time saver — laptop-to-money — Proven
 - [2026-11-07] [process] Don't act on garbled messages; ask — laptop-to-money — Proven
+- [2026-11-07] [motion] DEFAULT for every move = mountain speed graph In 75 / Out 75 (user rule, not only turntables) — scripts/mountain_ease.py — Proven
