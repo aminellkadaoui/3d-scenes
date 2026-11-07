@@ -1,0 +1,9 @@
+{
+  "name": "3d-scenes",
+  "version": "1.0.0",
+  "description": "Build cinematic Blender 3D scenes for videos (VSL, ads, reels) in record time with EEVEE: proven lighting/material/animation recipes, a short feedback-loop protocol, ready bpy scripts, a symptom->fix troubleshooting table, and a retro skill that turns every new project into reusable knowledge.",
+  "author": {
+    "name": "3D Scenes"
+  },
+  "keywords": ["blender", "eevee", "3d", "cinematic", "light-linking", "turntable", "match-cut", "vsl"]
+}

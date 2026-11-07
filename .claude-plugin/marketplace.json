@@ -1,0 +1,18 @@
+{
+  "name": "3d-scenes",
+  "owner": {
+    "name": "3D Scenes"
+  },
+  "metadata": {
+    "description": "Field-tested knowledge for building cinematic Blender scenes fast (EEVEE-first, short feedback loop).",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "3d-scenes",
+      "source": "./plugins/3d-scenes",
+      "description": "Build cinematic Blender 3D scenes for videos in record time: EEVEE quality recipes, light linking (track-matte lighting), turntable + object match cut, materials, noise fixes, short feedback loop, and a retro skill that grows the knowledge after every project.",
+      "version": "1.0.0"
+    }
+  ]
+}
