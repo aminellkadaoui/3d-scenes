@@ -72,6 +72,9 @@ Art direction or story changes, swapping a hero asset, changing an angle they ap
 ## Rules
 No auto-render, no auto-save (saving a copy for a requested render is fine). Never delete user objects — hide them in `_HIDDEN_*` collections. Full-quality deliveries only. Measure render time on one frame before promising a time.
 
+## Screen effects
+If asked for a screen effect (تأثير السكرين، LED، RGB pixels، شاشة واقعية), offer the options in `techniques/materials-screen-display-effects.md`: A) LED bulbs (Geometry Nodes instances, one video pixel per bulb), B) RGB subpixel mask (shader), C) plain emission. Build each one in its own duplicate of the scene, render the same frame of each with the project grade, and let the user choose. Never change the original scene.
+
 ## Growing the system
 - New tutorial → skill `3d-scenes-learn-tutorial` (adds `sources/` + `techniques/` + updates `knowledge/`).
 - Test a card in isolation → skill `3d-scenes-validate` (promotes Extracted → Reproduced → Validated).
