@@ -28,10 +28,10 @@ blender: "5.2"
 1. Mask image: square, black background, three vertical rounded bars red / green / blue each ~29 % wide (Non-Color, Linear). Generate it if missing.
 2. `Texture Coordinate.UV` → `Mapping` Scale = (pixels across, pixels down) keeping square cells: e.g. 640 × 383 on a 0.617 × 0.369 m screen → mask Image Texture.
 3. Separate Color(screen colour after its colour chain) × Separate Color(mask) per channel (3 Math Multiply) → Combine Color → Emission Color.
-4. **Keep it subtle — the content must stay the hero.** Mix the mask with white: `Mix(A = white, B = mask, Fac = RGB Effect Strength)` before the Separate node, start **0.5** (1.0 was rejected: the effect became more eye-catching than the screen). Compensate emission = base / (1 − strength × (1 − mask mean)); mask mean ≈ 0.27 → 5.08 → 8.0 at 0.5.
-5. Add Shader: Emission + Glossy (rough 0.05, colour 0.04) for the glass layer.
+4. Expose the strength: `Mix(A = white, B = mask, Fac = RGB Effect Strength)` before the Separate node. **Default 1.0 (full)** — the user liked the strong look; don't lower it unless asked. Compensate emission = base / (1 − strength × (1 − mask mean)); mask mean ≈ 0.27 → 5.08 → 17.8 at 1.0.
+5. Add Shader: Emission + Glossy for the glass layer — keep the reflection soft and faint: roughness **0.25**, colour **0.022** (0.05 / 0.04 gave a hard white patch the user rejected).
    Tutorial original: mapping ~670 × 250, emission 10.
 
 **Failure signs:** moiré bands on wide shots (B: lower the count or keep option C for wides; A: lower Vertices or rely on DOF/motion blur); image mirrored (fix UV direction); colours off vs the old screen (colour chain not copied); screen too dark after mask (emission not compensated).
-**Log:** 2026-11-08 — user feedback: LED cells must be much smaller (scale to the real screen), RGB effect at full strength is too loud → strength 0.5.
+**Log:** 2026-11-08 — user feedback: LED cells must be much smaller (scale to the real screen), the glass reflection must be soft and faint (rough 0.25, colour 0.022); the strong RGB effect (1.0) is liked — don't reduce it unasked. Ask before reading feedback as "reduce" when the user may be praising.
 2026-11-08 — built both on a copy of a VSL Analytics screen shot (EEVEE, AgX HC), rendered frame 570 of each for the user to choose.
