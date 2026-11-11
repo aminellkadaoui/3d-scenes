@@ -4,6 +4,7 @@ Short rules learned from real projects. Newest at the top. `3d-scenes-retro` app
 
 Format: `- [YYYY-MM-DD] [area] Rule — evidence (project) — status`
 
+- [2026-11-11] [quality] "Final render looks soft, details gone" (not resolution): compositor OIDN Denoise smears fine detail, worst on emissive screens (UI text) and keyboard legends; at 256 EEVEE samples mute it. Pixel filter 1.5 → 1.0. Motion blur only around the cut (keyframe Shutter 0 → 0.5 → 0). Measured edge detail +21 % on the same frame — laptop-to-money v2 — Proven
 - [2026-11-11] [motion] "Never stop, linear like a null" does NOT mean delete the accent move: keep two layers — constant linear drift on a parent + the mountain match-cut move on a child; removing the accent killed the match cut — laptop-to-money v2 — Proven
 - [2026-11-11] [motion] A camera move that crosses a cut must be symmetric around the cut (cut−N → cut+N) so its mountain peak lands on the cut together with the object's spin peak; verify by sampling camera world speed — laptop-to-money v2 — Proven
 - [2026-11-11] [camera] Camera angle follows the hero: one hand-framed station per hero state (closed / open / swapped), hero centred, headroom above when it grows up; key rig AND camera local position — laptop-to-money v2 — Proven
