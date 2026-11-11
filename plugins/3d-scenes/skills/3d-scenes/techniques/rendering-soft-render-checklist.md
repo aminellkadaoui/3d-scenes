@@ -21,5 +21,5 @@ blender: "5.2"
 **How to test without guessing:** render ONE representative frame per variant in a background Blender (never inside the user's open session), then measure the same crops: mean gradient and Laplacian variance for sharpness, standard deviation of a dark flat area for noise. Keep a change only if sharpness rises and noise does not.
 
 **Avoid:** a Sharpen filter node or filter size < 1.0 when the user asked for safe fixes; raising resolution to hide a blur cause; judging from the viewport or from a compressed preview.
-**Honest limit:** detail cannot exceed the source — a 2000 px screenshot on a 1080p frame is the ceiling; for more, the screen image itself must be exported larger/cleaner.
+**Honest limit:** detail is capped by how many frame pixels the screen covers, not by the screenshot size — here the laptop screen filled only about 480×410 px of the 1080p frame, so small UI text cannot be readable at that framing. For more: a closer shot of the screen or larger UI elements; a bigger source image does not help.
 **Log:** 2026-11-11 — laptop-to-money: 1079-line frames found and fixed; Denoise muted, filter 1.0, motion blur keyed around the cut, screen texture Closest, anisotropic 16×. The user confirmed a big difference after the first three.
