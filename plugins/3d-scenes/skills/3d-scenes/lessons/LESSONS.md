@@ -4,6 +4,14 @@ Short rules learned from real projects. Newest at the top. `3d-scenes-retro` app
 
 Format: `- [YYYY-MM-DD] [area] Rule — evidence (project) — status`
 
+- [2026-11-11] [motion] "Never stop, linear like a null" does NOT mean delete the accent move: keep two layers — constant linear drift on a parent + the mountain match-cut move on a child; removing the accent killed the match cut — laptop-to-money v2 — Proven
+- [2026-11-11] [motion] A camera move that crosses a cut must be symmetric around the cut (cut−N → cut+N) so its mountain peak lands on the cut together with the object's spin peak; verify by sampling camera world speed — laptop-to-money v2 — Proven
+- [2026-11-11] [camera] Camera angle follows the hero: one hand-framed station per hero state (closed / open / swapped), hero centred, headroom above when it grows up; key rig AND camera local position — laptop-to-money v2 — Proven
+- [2026-11-11] [camera] When the user moves an unanimated camera, the edit persists on every frame — compare its location with the last known value to see what changed, then key it — laptop-to-money v2 — Proven
+- [2026-11-11] [timing] "Make the shots longer" = stretch around the cut (f' = cut + (f−cut)×k) so every peak stays on the cut; "+" = 25–30 % — laptop-to-money v2 — Proven
+- [2026-11-11] [environment] Floor in a black void: fade it into the exact backdrop colour by view angle AND radial distance; a bigger plane alone always leaves a horizon line — laptop-to-money v2 — Proven
+- [2026-11-11] [lighting] Floor light = very diffused, low, fades fast; diffuse-only (specular 0) so a glossy floor shows no light rectangles; don't add "new-looking" strong lights — laptop-to-money v2 — Proven
+- [2026-11-11] [materials] "Reflective feel" = raise roughness toward the hero's lacquer (~0.4), keep the texture; a mirror in a void reflects black and looks dead; never swap the texture unasked — laptop-to-money v2 — Proven
 - [2026-11-07] [motion] "Peak Zoom" (زوم القمة): 30-frame mountain move whose speed peak lands exactly on the key frame (a click, a cut, or a frame the user names); half before, half after, then hold — screen-ui-shots — Proven
 - [2026-11-07] [motion] Moves across cuts: put the same two keys (cut−15 old pose, cut+15 new pose) on BOTH cameras so the peak lands on the cut and the shot reads continuous; join check = camera position difference 0 at every cut — screen-ui-shots — Proven
 - [2026-11-07] [motion] Peak slightly BEFORE the action (≈8 frames before the click) when the user wants the frame settled on the target as the click happens — screen-ui-shots — Candidate

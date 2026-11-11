@@ -40,3 +40,22 @@ Purpose: a 5.3 s shot for a sales video. A laptop with an editing timeline spins
 3. Light per group with light linking **from the start** (scene / hero A / hero B / table rim).
 4. Apply the final EEVEE profile and render one frame early to measure time and noise.
 5. Then iterate only on look with the user.
+
+## Session 2 (v2) — the user's revisions and why
+| # | Request / problem | Decision | Result |
+|---|---|---|---|
+| 22 | Camera direction | Reverse the crane: start HIGH on the laptop, come DOWN on the money (swap key values, mirror handle slopes) | Laptop seen from above, money low and heroic |
+| 23 | Shots too short | Each shot +25 % (80 → 100 frames); stretch every key around the cut so the spin peak stays on it | 100–199 laptop, 200–299 money |
+| 24 | Band of trees / line at the top | Not the render: Material Preview HDRI + floor edge seen by the low camera. Fix = endless floor fade (see `environment-endless-floor-void`) | No horizon edge |
+| 25 | Floor invisible | Soft diffuse-only fills; then "less strong, very diffused, fade a lot" | Floor hints, fades to black |
+| 26 | "Reflective like the table top" | Keep texture; roughness ≈ the hero top (0.36–0.48). Marble swap + strong round spot were rejected | Soft sheen |
+| 27 | Camera framed per element | Stations: closed laptop 100, open laptop 153, money; user framed each by hand (see `camera-hero-framed-stations`) | Hero centred, headroom when the lid opens |
+| 28 | Money part longer | Money side +30 % (200–329); split the spin curve at the cut and stretch only the after part | — |
+| 29 | Spin "must never stop, linear like a null" | Mistake: replaced the match-cut curve with a linear spin → user: the match cut is gone. Correct = TWO layers: constant slow linear drift (parent, 0.4 °/f, extrapolated) + the mountain match-cut spin (child) with its peak on the cut | Never stops AND whips through the cut |
+| 30 | Camera move after the cut | Make the crossing move symmetric around the cut (153 → 247 for cut 200) so its mountain peak lands on the cut, like the spin | Camera + spin peak together at 199.5 |
+
+### v2 numbers
+- 100–329 @30 fps, cut 200. Laptop 100 f, money 130 f.
+- Spin: drift 0.007 rad/f linear extrapolated + 360° mountain 137.5–262.5 (peak 0.207 rad/f at 199–200).
+- Camera: stations 100 / 153 / 247 (rig tilt + camera local position), mountain handles 75 %.
+- Floor: 200 m plane, angle fade 0.30→0.02 + radial fade 1.5→8 m to the backdrop colour, roughness 0.36–0.48.

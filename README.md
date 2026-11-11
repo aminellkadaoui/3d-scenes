@@ -2,7 +2,7 @@
 
 نظام معرفي لـClaude Code يخلّيه يبني مشاهد Blender سينمائية (VSL، إعلانات، ريلز، منتجات) بسرعة وبجودة احترافية، مو «AI slop». فيه طبقتين: **وصفات مجربة** من مشاريع حقيقية بالأرقام، و**مكتبة معرفة** كاملة مستخرجة من 30 شرح (يوتيوب + دروس Skool Render Room) و57 كرت تقنية.
 
-A Claude Code plugin that gives Claude a deep Blender knowledge base: field-tested production recipes (EEVEE quality, light linking, turntable + match cut…) plus a library distilled from 30 tutorials, 57 technique cards and 14 pillar guides (art direction → compositing), with QA, validation, tutorial-learning and retro skills.
+A Claude Code plugin that gives Claude a deep Blender knowledge base: field-tested production recipes (EEVEE quality, light linking, turntable + match cut…) plus a library distilled from 30 tutorials, 60 technique cards and 14 pillar guides (art direction → compositing), with QA, validation, tutorial-learning and retro skills.
 
 ## وش فيه
 | الجزء | الوظيفة |
@@ -10,7 +10,7 @@ A Claude Code plugin that gives Claude a deep Blender knowledge base: field-test
 | **Skill `3d-scenes`** | المخرج: مسار العمل من البريف للتسليم، والـFeedback loop، ويوجّه لأي ملف يحتاجه |
 | `references/` (12) | **وصفات مجربة**: الإضاءة والـLight linking، والخامات، والحركة، والنويز، والرندر، وجدول المشاكل والحلول |
 | `knowledge/` (14) | **ركائز المعرفة**: الإخراج الفني، والتكوين، والكمرة والعدسات، والأصول، وخامات PBR، والإضاءة، والبيئة والأجواء، والتحريك، والرندر، وإدارة الألوان، والكمبوزيتنق، والواقعية، وتشخيص الـAI slop، ومسار الإنتاج |
-| `techniques/` (57) | **كروت تقنيات**: المبدأ، والخطوات بالقيم، ومتى تستخدم ومتى لا، وعلامات الفشل، والتكلفة، وكيف تختبرها |
+| `techniques/` (60) | **كروت تقنيات**: المبدأ، والخطوات بالقيم، ومتى تستخدم ومتى لا، وعلامات الفشل، والتكلفة، وكيف تختبرها |
 | `sources/` (30) | **تحليل الشروحات** بالتوقيتات `[id@mm:ss]`، والادعاءات المشكوك فيها، ودروس ضد الـslop |
 | `looks/` | تحليل ستايل مقاس بالأرقام (مثال: وثائقي ليلي غامق) |
 | `scripts/` (14) | سكربتات جاهزة: Turntable، Match cut، Light linking، جودة EEVEE، كمرة Crane، تشخيص الضوء، قياس الريفرنس، فحص الفليكر، مقارنة EEVEE/Cycles، تحميل الشروحات |
