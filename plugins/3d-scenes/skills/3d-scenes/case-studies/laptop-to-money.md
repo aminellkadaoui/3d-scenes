@@ -53,6 +53,8 @@ Purpose: a 5.3 s shot for a sales video. A laptop with an editing timeline spins
 | 28 | Money part longer | Money side +30 % (200–329); split the spin curve at the cut and stretch only the after part | — |
 | 29 | Spin "must never stop, linear like a null" | Mistake: replaced the match-cut curve with a linear spin → user: the match cut is gone. Correct = TWO layers: constant slow linear drift (parent, 0.4 °/f, extrapolated) + the mountain match-cut spin (child) with its peak on the cut | Never stops AND whips through the cut |
 | 30 | Camera move after the cut | Make the crossing move symmetric around the cut (153 → 247 for cut 200) so its mountain peak lands on the cut, like the spin | Camera + spin peak together at 199.5 |
+| 31 | "Final render always soft, details don't read" (not resolution) | Compositor Denoise muted, filter size 1.5 → 1.0, motion blur keyed only around the cut. Then found every frame was 1920×1079 (Render Region crop) → region off. Screen texture `Closest`, anisotropic 16× (see `rendering-soft-render-checklist`) | User: big difference; screen detail +10–14 % measured, same noise |
+| 32 | "More, but nothing that can break it" | Sharpen node + filter 0.75 were tried and rolled back; only cause-removal fixes kept | Safe, same resolution |
 
 ### v2 numbers
 - 100–329 @30 fps, cut 200. Laptop 100 f, money 130 f.

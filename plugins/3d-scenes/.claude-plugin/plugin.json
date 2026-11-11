@@ -1,6 +1,6 @@
 {
   "name": "3d-scenes",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "Deep Blender knowledge for building cinematic, non-slop 3D scenes fast: field-tested recipes (EEVEE quality, light linking / track-matte lighting, turntable + match cut, camera rigs, noise fixes) plus a library of 14 pillar guides, 57 technique cards and 30 analysed tutorials, with QA, validation, tutorial-learning and retro skills.",
   "author": {
     "name": "3D Scenes"

@@ -41,3 +41,8 @@ Format: `- [YYYY-MM-DD] [area] Rule — evidence (project) — status`
 - [2026-11-07] [setup] Starting from the user's approved scene is the biggest time saver — laptop-to-money — Proven
 - [2026-11-07] [process] Don't act on garbled messages; ask — laptop-to-money — Proven
 - [2026-11-07] [motion] DEFAULT for every move = mountain speed graph In 75 / Out 75 (user rule, not only turntables) — scripts/mountain_ease.py — Proven
+- [2026-11-11] [render] Soft render, check the output SIZE first: Render Region + Crop with border 0.99999994 gave 1920×1079 on every frame → the editor resamples the whole picture. Turn the region off and re-render — rendering-soft-render-checklist — Proven
+- [2026-11-11] [quality] EEVEE at 256 samples is already clean: compositor Denoise only smears detail (mute it); filter size 1.5 → 1.0; motion blur keyed only around the cut — rendering-soft-render-checklist — Proven
+- [2026-11-11] [quality] Screen/UI image shown smaller than its size: Image Texture `Closest` in EEVEE (no mipmaps, TAA averages the texels) = +10–14 % measured detail, same noise; Cubic nearly equal; no effect on big model textures — rendering-soft-render-checklist — Proven
+- [2026-11-11] [setup] Anisotropic filtering is a per-machine Preference (not in the .blend): set 16× on the render machine too, or in the background job script — rendering-soft-render-checklist — Proven
+- [2026-11-11] [process] "Make it clearer, but nothing that can break it, no higher resolution" = remove blur causes and measure; no Sharpen node, no filter below 1.0 (both were tried and rolled back) — rendering-soft-render-checklist — Proven
